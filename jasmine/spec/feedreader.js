@@ -112,22 +112,23 @@ $(function() {
                 * Remember, loadFeed() is asynchronous.
                 */
             it('ensure content actually change, when a new feed is loaded by the loadFeed function', function(done) {
-                let entryElementList_0;
-                entryElementList_0 = document.getElementsByClassName('entry-link');
-                let elementBaseURIList_0 = [];
-                for(const item of entryElementList_0){
-                    elementBaseURIList_0.push(item.href);
+            loadFeed(0, function(){
+                let oldEntryList;
+                oldEntryList = document.getElementsByClassName('entry-link');
+                let oldEntryHrefList = [];
+                for(const item of oldEntryList){
+                    oldEntryHrefList.push(item.href);
                 }
                 loadFeed(1, function() {
-                    let entryElementList_1 = document.getElementsByClassName('entry-link');
-                    let elementBaseURIList_1 = [];
-                    for(const item of entryElementList_1){
-                        elementBaseURIList_1.push(item.href);
+                    let newEntryList = document.getElementsByClassName('entry-link');
+                    let newEntryHrefList = [];
+                    for(const item of newEntryList){
+                        newEntryHrefList.push(item.href);
                     }
-                    expect(elementBaseURIList_0).not.toEqual(elementBaseURIList_1);
+                    expect(oldEntryHrefList).not.toEqual(newEntryHrefList);
                     done();
                 });
-            });
+            })
         });
     });  
 }());
