@@ -64,7 +64,7 @@ $(function() {
 
          it('should menu element be hidden by default', function() {
             const menuClassName = document.getElementsByTagName('body')[0].classList[0];
-            expect(menuClassName).toBe('menu-hidden');
+            expect(menuClassName.includes('menu-hidden')).toBe(true);
          });
 
          /* Write a test that ensures the menu changes
@@ -80,7 +80,7 @@ $(function() {
             expect(menuClassName).not.toBeDefined();
             menuIcon.click();
             menuClassName = document.getElementsByTagName('body')[0].classList[0];
-            expect(menuClassName).toBe('menu-hidden');
+            expect(menuClassName.includes('menu-hidden')).toBe(true);
           });
     });
 
@@ -95,7 +95,7 @@ $(function() {
             */
         beforeEach(function(done){
             loadFeed(0, done);
-            });
+        }); 
 
         it('ensure at least a single entry element within the container, when loadFeed function is called', function(done) {
             const entryElementList = document.getElementsByClassName('entry');
@@ -103,14 +103,14 @@ $(function() {
             done();
 
         });
-        });
-         /* Write a new test suite named "New Feed Selection" */
-        describe('New Feed Selection', function() {
-                /* Write a test that ensures when a new feed is loaded
-                * by the loadFeed function that the content actually changes.
-                * Remember, loadFeed() is asynchronous.
-                */
-            it('ensure content actually change, when a new feed is loaded by the loadFeed function', function(done) {
+    });  
+    /* Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function() {
+    /* Write a test that ensures when a new feed is loaded
+    * by the loadFeed function that the content actually changes.
+    * Remember, loadFeed() is asynchronous.
+    */
+        it('ensure content actually change, when a new feed is loaded by the loadFeed function', function(done) {
             loadFeed(0, function(){
                 let oldEntryList;
                 oldEntryList = document.getElementsByClassName('entry-link');
@@ -129,5 +129,5 @@ $(function() {
                 });
             })
         });
-    });  
+    });
 }());
