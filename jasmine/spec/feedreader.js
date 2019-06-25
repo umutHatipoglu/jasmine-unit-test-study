@@ -94,16 +94,15 @@ $(function() {
             * the use of Jasmine's beforeEach and asynchronous done() function.
             */
         beforeEach(function(done){
-            loadFeed(0, function(){
-                done();
+            loadFeed(0, done);
             });
-        })    
 
         it('ensure at least a single entry element within the container, when loadFeed function is called', function(done) {
-            const entryElementList = document.getElementsByClassName('entry-link');
+            const entryElementList = document.getElementsByClassName('entry');
             expect(entryElementList.length).toBeGreaterThan(0);
             done();
 
+        });
         });
          /* Write a new test suite named "New Feed Selection" */
         describe('New Feed Selection', function() {
